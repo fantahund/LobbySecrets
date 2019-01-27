@@ -1,0 +1,8 @@
+name: Secrets
+version: 1.1.9
+author: fanta & Shanawi
+main: me.fanta.secrets.main.Secrets
+commands:
+     secrets:
+          description:
+          usage:

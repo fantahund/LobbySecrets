@@ -1,0 +1,38 @@
+Messages:
+  SecretFound: '&aSecrets &8> &7Du hast das Secret &e%SECRET% &7gefunden!'
+  FoundTitleHeader: '&a %SECRET%'
+  FoundTitleFooter: '&7Gefunden!'
+  AlreadyFound: '&aSecrets &8> &cDu hast dieses Secret schon gefunden.'
+  SecretCreated: '&aSecrets &8> &eDu hast das Secret &c%SECRET% &eerstellt!'
+  Reload: '&aSecrets &8> &aConfig wurde neu geladen!'
+  NoPermReload: '&aSecrets &8> &cKeine Berechtigung!!! &4(secrets.reload)'
+  SubCommandnotFound: '&aSecrets &8> &cKommando nicht gefunden! &4(/Secrets <Alias>)' 
+  balanceAddSuccess: '&aSecrets &8> &7Dir wurden &e%s &7gutgeschrieben!'
+  balanceAddError: "&aSecrets &8> &cDer Betrag &e%s &ckonnte nicht hinzugefügt werden!"
+Settings:
+  CommandOnFound: say Hello %PLAYER% insert your Command here!
+  Vault:
+      Enable: false
+      Money: 120
+Items:  
+  SecretItem:
+      Type: 'EMERALD'
+      Slot: 0
+      Name: '&aSecrets'
+      Lore: '&aListe von gefundenen Secrets'   
+  ItemNoSecretFound:
+      Type: 'BARRIER'
+      Name: '&cNix!!'
+      Lore: '&8> &7Du hast noch keine Secrets gefunden.'   
+  ItemSecretFound:
+    Type: 'GOLD_BLOCK'
+    SecretDisplayColor: '&a'
+    Lore: '&8> &7Gefunden!'   
+  ItemTotalFoundSecrets:
+    Type: 'EMERALD'    
+    Name: '&eGefundene Secrets'
+    TotalFoundSecretsLoreColor: '&7'    
+Sign:
+  line1: '&8[&aSecret&8]'
+  line3: '&7<Rechts Klick>'
+  line4: ' '
