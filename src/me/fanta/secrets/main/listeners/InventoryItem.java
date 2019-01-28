@@ -12,8 +12,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import de.Herbystar.TTA.TTA_Methods;
 import me.fanta.secrets.main.Secrets;
 
 public class InventoryItem implements Listener {

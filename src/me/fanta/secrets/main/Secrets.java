@@ -24,8 +24,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import de.Herbystar.TTA.TTA_Methods;
-
 public class Secrets extends JavaPlugin implements Listener {
 	
 	private static Plugin instance;
@@ -36,16 +34,24 @@ public class Secrets extends JavaPlugin implements Listener {
 				"------------------------- Secrets " + getDescription().getVersion() + " -------------------------");
 		System.out.println("Secrets " + getDescription().getVersion() + " is loading... [" + Bukkit.getVersion() + "]");
 		System.out.println("Plugin by " + getDescription().getAuthors());
-		System.out.println("Date Modified: 23 Jan 2019");
+		System.out.println("Date Modified: 28 Jan 2019");
+		if(hasTTA()) {
+			System.out.println("TTA detected!");
+		} else {
+            System.out.println("TTA not detected!");
+        }
+		if(hasVault()) {
+			System.out.println("Vault detected!");
+			VaultUtils.setupEconomy(this);
+		}
+        else {
+            System.out.println("Vault not detected!");
+        }
 		getServer().getPluginManager().registerEvents(new SignClickListener(this), this);
 		getServer().getPluginManager().registerEvents(new SignCreateListener(this), this);
 		getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
 		getServer().getPluginManager().registerEvents(new InventoryItem(this), this);
 		System.out.println("Version " + getDescription().getVersion() + " Was loaded successfully!");
-		if(hasVault()) {
-			System.out.println("Vault detected!");
-			VaultUtils.setupEconomy(this);
-		}
 		System.out.println("-----------------------------------------------------------------");
 		loadConfig();
 		saveConfig();
@@ -166,6 +172,14 @@ public class Secrets extends JavaPlugin implements Listener {
             return false;
         }
     }
+	public static boolean hasTTA(){
+		try {
+			Class.forName("de.Herbystar.TTA.TTA_Methods");
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	
 	public static Plugin getInstance() {
 		return instance;

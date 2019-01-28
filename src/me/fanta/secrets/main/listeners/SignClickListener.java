@@ -58,7 +58,9 @@ public class SignClickListener implements Listener {
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
-                        TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
+                        if (Secrets.hasTTA()) {
+                            TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
+                        }
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
                         achievment = achievment.replace("%PLAYER%", p.getName());
@@ -93,7 +95,9 @@ public class SignClickListener implements Listener {
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
-                        TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
+                        if (Secrets.hasTTA()) {
+                            TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
+                        }
 
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");
                         achievment = achievment.replace("%PLAYER%", p.getName());
