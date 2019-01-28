@@ -89,10 +89,6 @@ public class Secrets extends JavaPlugin implements Listener {
 					Inventory invs = Bukkit.createInventory(null, 27, "Secrets");
 					ItemStack none = ItemUtil.Stack(NothingFound, NothingFoundItem, NothingFoundLore, 1, (short) 1);
 					ItemMeta Itemmeta = none.getItemMeta();
-					if (getConfig().getBoolean("Items.ItemNoSecretFound.Enchanted")) {
-						TTA_Methods.createItemGlow(Itemmeta);
-						none.setItemMeta(Itemmeta);
-					}
 					invs.setItem(13, none);
 					p.openInventory(invs);
 					return false;
@@ -104,7 +100,6 @@ public class Secrets extends JavaPlugin implements Listener {
 					ItemStack Secret = ItemUtil.Stack(SecretColor + all, SercetITEM, Found, 1, (short) 10);
 					if (getConfig().getBoolean("Items.ItemSecretFound.Enchanted")) {
 						ItemMeta SecretMeta = Secret.getItemMeta();
-						TTA_Methods.createItemGlow(SecretMeta);
 						Secret.setItemMeta(SecretMeta);
 					}
 					inv.setItem(i, Secret);
@@ -120,7 +115,6 @@ public class Secrets extends JavaPlugin implements Listener {
 						(short) 0);
 				if (getConfig().getBoolean("Items.ItemSecretFound.Enchanted")) {
 					ItemMeta amountMeta = amount.getItemMeta();
-					TTA_Methods.createItemGlow(amountMeta);
 					amount.setItemMeta(amountMeta);
 				}
 				inv.setItem(53, amount);

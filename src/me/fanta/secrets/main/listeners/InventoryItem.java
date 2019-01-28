@@ -39,9 +39,6 @@ public class InventoryItem implements Listener {
 			ArrayList<String> lore = new ArrayList<String>();
 			lore.add(Plugin.getConfig().getString("Items.SecretItem.Lore").replace("&", "§"));
 			Itemmeta.setLore(lore);
-			if (Plugin.getConfig().getBoolean("Items.SecretItem.Enchanted")) {
-				TTA_Methods.createItemGlow(Itemmeta);
-			}
 			Item.setItemMeta(Itemmeta);
 			p.getInventory().setItem(Plugin.getConfig().getInt("Items.SecretItem.Slot"), Item);
 		}
