@@ -12,27 +12,9 @@ public class InventoryClickListener
   public void onClick(InventoryClickEvent e)
   {
     Player p = (Player)e.getWhoClicked();
-    if (e.getClickedInventory() == null)
-    {
-      e.getWhoClicked().closeInventory();
-      return;
-    }
-    if (p.getOpenInventory().getTopInventory() == null) {
-      return;
-    }
-    if (e.getClickedInventory() == null) {
-      return;
-    }
-    if (e.getCurrentItem() == null) {
-      return;
-    }
-    if (e.getCurrentItem().getItemMeta() == null) {
-      return;
-    }
-    if (e.getClickedInventory().getName().equals("Secrets"))
+    if (p.getOpenInventory().getTitle().equals("Secrets"))
     {
       e.setCancelled(true);
-      return;
     }
   }
 }
