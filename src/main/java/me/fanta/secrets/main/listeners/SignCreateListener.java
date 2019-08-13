@@ -11,23 +11,23 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 
 public class SignCreateListener implements Listener {
-	public static Secrets main;
+    public static Secrets main;
 
-	public SignCreateListener(Secrets main) {
-		SignCreateListener.main = main;
-	}
+    public SignCreateListener(Secrets main) {
+        SignCreateListener.main = main;
+    }
 
-	@EventHandler
-	public void onSigncreate(SignChangeEvent e) throws IndexOutOfBoundsException, IOException {
-		Player p = e.getPlayer();
-		if ((p.hasPermission("secret.admin")) && (e.getLine(0).equalsIgnoreCase("[secret]"))) {
-			String Secretcreate = main.getConfig().getString("Messages.SecretCreated").replace("&", "ง");
-			Secretcreate = Secretcreate.replace("%SECRET%", e.getLine(1));
+    @EventHandler
+    public void onSigncreate(SignChangeEvent e) throws IndexOutOfBoundsException, IOException {
+        Player p = e.getPlayer();
+        if ((p.hasPermission("secret.admin")) && (e.getLine(0).equalsIgnoreCase("[secret]"))) {
+            String Secretcreate = main.getConfig().getString("Messages.SecretCreated").replace("&", "ยง");
+            Secretcreate = Secretcreate.replace("%SECRET%", e.getLine(1));
 
-			SecretCreator.createSecret(e.getLine(1));
-			p.sendMessage(Secretcreate);
-			e.setLine(0, main.Linie1);
-			e.setLine(2, main.Linie3);
-		}
-	}
+            SecretCreator.createSecret(e.getLine(1));
+            p.sendMessage(Secretcreate);
+            e.setLine(0, main.Linie1);
+            e.setLine(2, main.Linie3);
+        }
+    }
 }

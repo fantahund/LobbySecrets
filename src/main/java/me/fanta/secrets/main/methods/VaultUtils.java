@@ -9,10 +9,10 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 
 public class VaultUtils {
-	
-	private static Economy econ = null;
-	
-	public static boolean setupEconomy(Plugin plugin) {
+
+    private static Economy econ = null;
+
+    public static boolean setupEconomy(Plugin plugin) {
         if (plugin.getServer().getPluginManager().getPlugin("Vault") == null) {
             return false;
         }
@@ -23,18 +23,18 @@ public class VaultUtils {
         econ = rsp.getProvider();
         return econ != null;
     }
-	
-	public static Economy getEcon() {
-		return econ;
-	}
-	
-	public static void setBalance(Player player, double balance) {
-		EconomyResponse r = econ.depositPlayer(player, balance);
-		if (r.transactionSuccess()) {
-			player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddSuccess").replace("&","ง"), econ.format(r.amount)));
-		} else {
-			player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddError").replace("&","ง"), econ.format(r.amount)));
-		}
-	}
+
+    public static Economy getEcon() {
+        return econ;
+    }
+
+    public static void setBalance(Player player, double balance) {
+        EconomyResponse r = econ.depositPlayer(player, balance);
+        if (r.transactionSuccess()) {
+            player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddSuccess").replace("&", "ยง"), econ.format(r.amount)));
+        } else {
+            player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddError").replace("&", "ยง"), econ.format(r.amount)));
+        }
+    }
 
 }

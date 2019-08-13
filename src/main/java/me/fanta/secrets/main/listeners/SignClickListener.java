@@ -35,7 +35,7 @@ public class SignClickListener implements Listener {
         FileConfiguration userfile = YamlConfiguration.loadConfiguration(Data);
         if ((e.getAction() == Action.RIGHT_CLICK_BLOCK) && ((e.getClickedBlock().getState() instanceof Sign))) {
             Sign s = (Sign) e.getClickedBlock().getState();
-            String Linie1 = main.getConfig().getString("Sign.line1").replace("&", "ง");
+            String Linie1 = main.getConfig().getString("Sign.line1").replace("&", "ยง");
             if (s.getLine(0).equalsIgnoreCase(Linie1)) {
                 String secretname = s.getLine(1);
                 List<String> list = cmdfile.getStringList("Secrets");
@@ -51,27 +51,26 @@ public class SignClickListener implements Listener {
                     if (!userfile.contains(p.getUniqueId().toString())) {
                         userfile.set(p.getUniqueId().toString(), "value");
                         List<String> userlist = userfile.getStringList(p.getUniqueId().toString());
-                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ง");
+                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ยง");
                         SecretFound = SecretFound.replace("%SECRET%", secretname);
-                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ง");
+                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ยง");
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
-                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ง");
+                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ยง");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
                         if (Secrets.hasTTA()) {
                             TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
                         }
-                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ง");
+                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ยง");
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
                         achievment = achievment.replace("%PLAYER%", p.getName());
 
-
                         Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), achievment);
                         if (main.getConfig().getBoolean("Settings.Vault.Enable"))
-                        if (Secrets.hasVault() && main.getConfig().getBoolean("Settings.Vault.Enable")) {
-                            VaultUtils.setBalance(p, money);
-                        }
-                            p.sendMessage(SecretFound);
+                            if (Secrets.hasVault() && main.getConfig().getBoolean("Settings.Vault.Enable")) {
+                                VaultUtils.setBalance(p, money);
+                            }
+                        p.sendMessage(SecretFound);
                         userlist.add(secretname);
                         userfile.set(p.getUniqueId().toString(), userlist);
                         try {
@@ -82,39 +81,40 @@ public class SignClickListener implements Listener {
                     } else {
                         List<String> userlist = userfile.getStringList(p.getUniqueId().toString());
                         if (userlist.contains(secretname)) {
-                            String SecretFoundsub = main.getConfig().getString("Messages.AlreadyFound").replace("&", "ง");
+                            String SecretFoundsub = main.getConfig().getString("Messages.AlreadyFound").replace("&", "ยง");
                             p.sendMessage(SecretFoundsub);
                             return;
                         }
-                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ง");
+                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ยง");
                         SecretFound = SecretFound.replace("%SECRET%", secretname);
 
-                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ง");
+                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ยง");
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
 
-                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ง");
+                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ยง");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
                         if (Secrets.hasTTA()) {
                             TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
                         }
 
-                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ง");
+                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ยง");
                         achievment = achievment.replace("%PLAYER%", p.getName());
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
 
                         Bukkit.dispatchCommand(Bukkit.getServer().getConsoleSender(), achievment);
                         if (Secrets.hasVault() && main.getConfig().getBoolean("Settings.Vault.Enable")) {
-                            VaultUtils.setBalance(p, money); }
-                            p.sendMessage(SecretFound);
-                            userlist.add(secretname);
-                            userfile.set(p.getUniqueId().toString(), userlist);
-                            try {
-                                userfile.save(Data);
-                            } catch (IOException e1) {
-                                e1.printStackTrace();
-                            }
-                            return;
+                            VaultUtils.setBalance(p, money);
+                        }
+                        p.sendMessage(SecretFound);
+                        userlist.add(secretname);
+                        userfile.set(p.getUniqueId().toString(), userlist);
+                        try {
+                            userfile.save(Data);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                        return;
 
                     }
                 }

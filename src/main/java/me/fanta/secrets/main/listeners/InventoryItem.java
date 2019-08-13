@@ -16,55 +16,55 @@ import me.fanta.secrets.main.Secrets;
 
 public class InventoryItem implements Listener {
 
-	private Secrets Plugin;
+    private Secrets Plugin;
 
-	public InventoryItem(Secrets p) {
-		Plugin = p;
-	}
+    public InventoryItem(Secrets p) {
+        Plugin = p;
+    }
 
-	@EventHandler
-	public void ongetItembyJoin(PlayerJoinEvent e) {
+    @EventHandler
+    public void ongetItembyJoin(PlayerJoinEvent e) {
 
-		Player p = e.getPlayer();
-		if (e.getPlayer().hasPermission("secrets.item.get")) {
+        Player p = e.getPlayer();
+        if (e.getPlayer().hasPermission("secrets.item.get")) {
 
-			Material ItemType = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
-			String ItemName = Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง");
-			ItemStack Item = new ItemStack(ItemType, 1);
-			ItemMeta Itemmeta = Item.getItemMeta();
-			Itemmeta.setDisplayName(ItemName);
+            Material ItemType = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
+            String ItemName = Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง");
+            ItemStack Item = new ItemStack(ItemType, 1);
+            ItemMeta Itemmeta = Item.getItemMeta();
+            Itemmeta.setDisplayName(ItemName);
 
-			ArrayList<String> lore = new ArrayList<String>();
-			lore.add(Plugin.getConfig().getString("Items.SecretItem.Lore").replace("&", "ง"));
-			Itemmeta.setLore(lore);
-			Item.setItemMeta(Itemmeta);
-			p.getInventory().setItem(Plugin.getConfig().getInt("Items.SecretItem.Slot"), Item);
-		}
-	}
+            ArrayList<String> lore = new ArrayList<String>();
+            lore.add(Plugin.getConfig().getString("Items.SecretItem.Lore").replace("&", "ยง"));
+            Itemmeta.setLore(lore);
+            Item.setItemMeta(Itemmeta);
+            p.getInventory().setItem(Plugin.getConfig().getInt("Items.SecretItem.Slot"), Item);
+        }
+    }
 
-	@EventHandler
-	public void onPlayerDropItem(PlayerDropItemEvent e) {
-		if (!e.getPlayer().hasPermission("secrets.item.drop")) {
-			Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
-			if (e.getItemDrop().getItemStack().getType().equals(mat) && e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง"))) {
-				e.setCancelled(true);
-			}
-		}
-	}
+    @EventHandler
+    public void onPlayerDropItem(PlayerDropItemEvent e) {
+        if (!e.getPlayer().hasPermission("secrets.item.drop")) {
+            Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
+            if (e.getItemDrop().getItemStack().getType().equals(mat) && e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง"))) {
+                e.setCancelled(true);
+            }
+        }
+    }
 
-	@SuppressWarnings("deprecation")
-	@EventHandler
-	public void OnItemClick(PlayerInteractEvent e) {
-		if (e.getPlayer().hasPermission("secrets.item.use")) {
-			Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
-			if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-				Player p = e.getPlayer();
-				if (p.getItemInHand().getType().equals(mat)) {
-					if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง"))) {
-						p.performCommand("secrets");
-					}
-				}
-			}
-		}
-	}
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void OnItemClick(PlayerInteractEvent e) {
+        if (e.getPlayer().hasPermission("secrets.item.use")) {
+            Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
+            if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                Player p = e.getPlayer();
+                if (p.getItemInHand().getType().equals(mat)) {
+                    if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง"))) {
+                        p.performCommand("secrets");
+                    }
+                }
+            }
+        }
+    }
 }
