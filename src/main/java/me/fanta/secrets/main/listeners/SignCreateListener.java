@@ -21,7 +21,7 @@ public class SignCreateListener implements Listener {
 	public void onSigncreate(SignChangeEvent e) throws IndexOutOfBoundsException, IOException {
 		Player p = e.getPlayer();
 		if ((p.hasPermission("secret.admin")) && (e.getLine(0).equalsIgnoreCase("[secret]"))) {
-			String Secretcreate = main.getConfig().getString("Messages.SecretCreated").replace("&", "ยง");
+			String Secretcreate = main.getConfig().getString("Messages.SecretCreated").replace("&", "ง");
 			Secretcreate = Secretcreate.replace("%SECRET%", e.getLine(1));
 
 			SecretCreator.createSecret(e.getLine(1));

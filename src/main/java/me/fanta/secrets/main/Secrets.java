@@ -69,9 +69,9 @@ public class Secrets extends JavaPlugin implements Listener {
 		cfg.options().copyDefaults(true);
 	}
 
-	public String Linie1 = getConfig().getString("Sign.line1").replace("&", "Â§");
-	public String Linie3 = getConfig().getString("Sign.line3").replace("&", "Â§");
-	public String Linie4 = getConfig().getString("Sign.line4").replace("&", "Â§");
+	public String Linie1 = getConfig().getString("Sign.line1").replace("&", "§");
+	public String Linie3 = getConfig().getString("Sign.line3").replace("&", "§");
+	public String Linie4 = getConfig().getString("Sign.line4").replace("&", "§");
 
 	public boolean onCommand(CommandSender sender, Command cmd, String cmdlable, String[] args) {
 		if (args.length == 0) {
@@ -81,19 +81,20 @@ public class Secrets extends JavaPlugin implements Listener {
 				FileConfiguration cmdfile = YamlConfiguration.loadConfiguration(Cmd);
 				File Data = new File("plugins/Secrets", "Users.yml");
 				FileConfiguration userfile = YamlConfiguration.loadConfiguration(Data);
-				String NothingFoundLore = getConfig().getString("Items.ItemNoSecretFound.Lore").replace("&", "Â§");
-				String NothingFound = getConfig().getString("Items.ItemNoSecretFound.Name").replace("&", "Â§");
+				String NothingFoundLore = getConfig().getString("Items.ItemNoSecretFound.Lore").replace("&", "§");
+				String NothingFound = getConfig().getString("Items.ItemNoSecretFound.Name").replace("&", "§");
 				Material NothingFoundItem = Material.getMaterial(getConfig().getString("Items.ItemNoSecretFound.Type"));
-				String SecretColor = getConfig().getString("Items.ItemSecretFound.SecretDisplayColor").replace("&", "Â§");
-				String Found = getConfig().getString("Items.ItemSecretFound.Lore").replace("&", "Â§");
-				String total = getConfig().getString("Items.ItemTotalFoundSecrets.Name").replace("&", "Â§");
-				String totalcolor = getConfig().getString("Items.ItemTotalFoundSecrets.TotalFoundSecretsLoreColor").replace("&", "Â§");
+				String SecretColor = getConfig().getString("Items.ItemSecretFound.SecretDisplayColor").replace("&", "§");
+				String Found = getConfig().getString("Items.ItemSecretFound.Lore").replace("&", "§");
+				String total = getConfig().getString("Items.ItemTotalFoundSecrets.Name").replace("&", "§");
+				String totalcolor = getConfig().getString("Items.ItemTotalFoundSecrets.TotalFoundSecretsLoreColor").replace("&", "§");
 				List<String> userlist = userfile.getStringList(p.getUniqueId().toString());
 				List<String> list = cmdfile.getStringList("Secrets");
 				Inventory inv = Bukkit.createInventory(null, 54, "Secrets");
 				if (!userfile.contains(p.getUniqueId().toString())) {
 					Inventory invs = Bukkit.createInventory(null, 27, "Secrets");
 					ItemStack none = ItemUtil.Stack(NothingFound, NothingFoundItem, NothingFoundLore, 1, (short) 1);
+					@SuppressWarnings("unused")
 					ItemMeta Itemmeta = none.getItemMeta();
 					invs.setItem(13, none);
 					p.openInventory(invs);
@@ -129,35 +130,35 @@ public class Secrets extends JavaPlugin implements Listener {
 			return false;
 		} else if (args[0].equalsIgnoreCase("reload")) {
 			if(sender.hasPermission("secrets.reload")) {
-			String Reload = getConfig().getString("Messages.Reload").replace("&", "Â§");
+			String Reload = getConfig().getString("Messages.Reload").replace("&", "§");
 			reloadConfig();
 			sender.sendMessage(Reload);
 			return true;
 			} else {
-				String NoPermReload = getConfig().getString("Messages.NoPermReload").replace("&", "Â§");
+				String NoPermReload = getConfig().getString("Messages.NoPermReload").replace("&", "§");
 				sender.sendMessage(NoPermReload);	
 			}
 		} else if (args[0].equalsIgnoreCase("info")) {
 			if(sender.hasPermission("secrets.info")) {
-				sender.sendMessage("Â§a----------Â§9SecretsÂ§a----------\n"
-						+ "Â§9Commands:\n"
-						+ "Â§a/secrets Â§c- Â§aShow the Secrets GUI\n"
-						+ "Â§a/secrets reload Â§c- Â§aReload the Config\n"
-						+ "Â§a/secrets info Â§c- Â§aShow this Page\n"
-						+ "Â§aVersion: Â§c" + getDescription().getVersion() + " Â§aAuthors: Â§c" + getDescription().getAuthors() + "\n"
-						+ "Â§a----------Â§9SecretsÂ§a----------");
+				sender.sendMessage("§a----------§9Secrets§a----------\n"
+						+ "§9Commands:\n"
+						+ "§a/secrets §c- §aShow the Secrets GUI\n"
+						+ "§a/secrets reload §c- §aReload the Config\n"
+						+ "§a/secrets info §c- §aShow this Page\n"
+						+ "§aVersion: §c" + getDescription().getVersion() + " §aAuthors: §c" + getDescription().getAuthors() + "\n"
+						+ "§a----------§9Secrets§a----------");
 			return true;
 			} else {
-				sender.sendMessage("Â§a----------Â§9SecretsÂ§a----------\n"
-						+ "Â§9Commands:\n"
-						+ "Â§a/secrets Â§c- Â§aShow the Secrets GUI\n"
-						+ "Â§a/secrets info Â§c- Â§aShow this Page\n"
-						+ "Â§aVersion: Â§c" + getDescription().getVersion() + " Â§aAuthors: Â§c" + getDescription().getAuthors() + "\n"
-						+ "Â§a----------Â§9SecretsÂ§a----------");
+				sender.sendMessage("§a----------§9Secrets§a----------\n"
+						+ "§9Commands:\n"
+						+ "§a/secrets §c- §aShow the Secrets GUI\n"
+						+ "§a/secrets info §c- Â§aShow this Page\n"
+						+ "§aVersion: §c" + getDescription().getVersion() + " §aAuthors: §c" + getDescription().getAuthors() + "\n"
+						+ "§a----------§9Secrets§a----------");
 						
 			}
 		} else {
-			String SubCommandnotFound = getConfig().getString("Messages.SubCommandnotFound").replace("&", "Â§");
+			String SubCommandnotFound = getConfig().getString("Messages.SubCommandnotFound").replace("&", "§");
 			sender.sendMessage(SubCommandnotFound);
 			return true;
 		}

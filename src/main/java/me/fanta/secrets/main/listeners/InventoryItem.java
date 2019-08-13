@@ -29,13 +29,13 @@ public class InventoryItem implements Listener {
 		if (e.getPlayer().hasPermission("secrets.item.get")) {
 
 			Material ItemType = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
-			String ItemName = Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง");
+			String ItemName = Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง");
 			ItemStack Item = new ItemStack(ItemType, 1);
 			ItemMeta Itemmeta = Item.getItemMeta();
 			Itemmeta.setDisplayName(ItemName);
 
 			ArrayList<String> lore = new ArrayList<String>();
-			lore.add(Plugin.getConfig().getString("Items.SecretItem.Lore").replace("&", "ยง"));
+			lore.add(Plugin.getConfig().getString("Items.SecretItem.Lore").replace("&", "ง"));
 			Itemmeta.setLore(lore);
 			Item.setItemMeta(Itemmeta);
 			p.getInventory().setItem(Plugin.getConfig().getInt("Items.SecretItem.Slot"), Item);
@@ -46,7 +46,7 @@ public class InventoryItem implements Listener {
 	public void onPlayerDropItem(PlayerDropItemEvent e) {
 		if (!e.getPlayer().hasPermission("secrets.item.drop")) {
 			Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
-			if (e.getItemDrop().getItemStack().getType().equals(mat) && e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง"))) {
+			if (e.getItemDrop().getItemStack().getType().equals(mat) && e.getItemDrop().getItemStack().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง"))) {
 				e.setCancelled(true);
 			}
 		}
@@ -60,7 +60,7 @@ public class InventoryItem implements Listener {
 			if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 				Player p = e.getPlayer();
 				if (p.getItemInHand().getType().equals(mat)) {
-					if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ยง"))) {
+					if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "ง"))) {
 						p.performCommand("secrets");
 					}
 				}

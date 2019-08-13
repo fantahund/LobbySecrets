@@ -35,7 +35,7 @@ public class SignClickListener implements Listener {
         FileConfiguration userfile = YamlConfiguration.loadConfiguration(Data);
         if ((e.getAction() == Action.RIGHT_CLICK_BLOCK) && ((e.getClickedBlock().getState() instanceof Sign))) {
             Sign s = (Sign) e.getClickedBlock().getState();
-            String Linie1 = main.getConfig().getString("Sign.line1").replace("&", "ยง");
+            String Linie1 = main.getConfig().getString("Sign.line1").replace("&", "ง");
             if (s.getLine(0).equalsIgnoreCase(Linie1)) {
                 String secretname = s.getLine(1);
                 List<String> list = cmdfile.getStringList("Secrets");
@@ -51,17 +51,17 @@ public class SignClickListener implements Listener {
                     if (!userfile.contains(p.getUniqueId().toString())) {
                         userfile.set(p.getUniqueId().toString(), "value");
                         List<String> userlist = userfile.getStringList(p.getUniqueId().toString());
-                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ยง");
+                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ง");
                         SecretFound = SecretFound.replace("%SECRET%", secretname);
-                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ยง");
+                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ง");
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
-                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ยง");
+                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ง");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
                         if (Secrets.hasTTA()) {
                             TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
                         }
-                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ยง");
+                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ง");
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
                         achievment = achievment.replace("%PLAYER%", p.getName());
 
@@ -82,24 +82,24 @@ public class SignClickListener implements Listener {
                     } else {
                         List<String> userlist = userfile.getStringList(p.getUniqueId().toString());
                         if (userlist.contains(secretname)) {
-                            String SecretFoundsub = main.getConfig().getString("Messages.AlreadyFound").replace("&", "ยง");
+                            String SecretFoundsub = main.getConfig().getString("Messages.AlreadyFound").replace("&", "ง");
                             p.sendMessage(SecretFoundsub);
                             return;
                         }
-                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ยง");
+                        String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "ง");
                         SecretFound = SecretFound.replace("%SECRET%", secretname);
 
-                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ยง");
+                        String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "ง");
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
 
-                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ยง");
+                        String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "ง");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
 
                         if (Secrets.hasTTA()) {
                             TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
                         }
 
-                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ยง");
+                        String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "ง");
                         achievment = achievment.replace("%PLAYER%", p.getName());
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
 
