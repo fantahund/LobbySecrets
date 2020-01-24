@@ -13,8 +13,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-
-import de.Herbystar.TTA.TTA_Methods;
 import me.fanta.secrets.main.Secrets;
 import me.fanta.secrets.main.methods.VaultUtils;
 
@@ -57,10 +55,7 @@ public class SignClickListener implements Listener {
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
-
-                        if (Secrets.hasTTA()) {
-                            TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
-                        }
+                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 10, 50, 10);
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
                         achievment = achievment.replace("%PLAYER%", p.getName());
@@ -93,10 +88,8 @@ public class SignClickListener implements Listener {
 
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
+                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 100, 120, 100);
 
-                        if (Secrets.hasTTA()) {
-                            TTA_Methods.sendTitle(e.getPlayer(), SecretFoundheader, 100, 120, 100, SecretFoundsub, 10, 50, 10);
-                        }
 
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");
                         achievment = achievment.replace("%PLAYER%", p.getName());

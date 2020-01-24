@@ -1,6 +1,6 @@
 Messages:
   SecretFound: '&aSecrets &8> &7Du hast das Secret &e%SECRET% &7gefunden!'
-  FoundTitleHeader: '&a %SECRET%'
+  FoundTitleHeader: '&a%SECRET%'
   FoundTitleFooter: '&7Gefunden!'
   AlreadyFound: '&aSecrets &8> &cDu hast dieses Secret schon gefunden.'
   SecretCreated: '&aSecrets &8> &eDu hast das Secret &c%SECRET% &eerstellt!'
