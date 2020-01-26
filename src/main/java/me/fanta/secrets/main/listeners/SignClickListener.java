@@ -52,10 +52,13 @@ public class SignClickListener implements Listener {
                         String SecretFound = main.getConfig().getString("Messages.SecretFound").replace("&", "§");
                         SecretFound = SecretFound.replace("%SECRET%", secretname);
                         String SecretFoundheader = main.getConfig().getString("Messages.FoundTitleHeader").replace("&", "§");
+                        double Time = main.getConfig().getDouble("Settings.Title-Time");
                         SecretFoundheader = SecretFoundheader.replace("%SECRET%", secretname);
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
-                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 10, 50, 10);
+                        
+                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 10, (int) Time, 10);
+                        
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");
                         double money = main.getConfig().getDouble("Settings.Vault.Money");
                         achievment = achievment.replace("%PLAYER%", p.getName());
@@ -88,7 +91,8 @@ public class SignClickListener implements Listener {
 
                         String SecretFoundsub = main.getConfig().getString("Messages.FoundTitleFooter").replace("&", "§");
                         SecretFoundsub = SecretFoundsub.replace("%SECRET%", secretname);
-                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 100, 120, 100);
+                        double Time = main.getConfig().getDouble("Settings.Title-Time");
+                        e.getPlayer().sendTitle(SecretFoundheader, SecretFoundsub, 10, (int) Time, 10);
 
 
                         String achievment = main.getConfig().getString("Settings.CommandOnFound").replace("&", "§");

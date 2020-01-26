@@ -14,6 +14,7 @@ Settings:
   Vault:
       Enable: false
       Money: 120
+  Title-Time: 100    
 Items:  
   SecretItem:
       Type: 'EMERALD'
