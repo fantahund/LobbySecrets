@@ -39,7 +39,7 @@ public class SignClickListener implements Listener {
                 List<String> list = cmdfile.getStringList("Secrets");
                 if (list.contains(secretname)) {
                     if (!Data.exists()) {
-                        userfile.set("active", Boolean.valueOf(true));
+                        userfile.set("active", true);
                         try {
                             userfile.save(Data);
                         } catch (IOException e1) {
@@ -111,7 +111,6 @@ public class SignClickListener implements Listener {
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
-                        return;
 
                     }
                 }

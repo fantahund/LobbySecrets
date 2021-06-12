@@ -85,7 +85,7 @@ public class Secrets extends JavaPlugin implements Listener {
                 Inventory inv = Bukkit.createInventory(null, 54, "Secrets");
                 if (!userfile.contains(p.getUniqueId().toString())) {
                     Inventory invs = Bukkit.createInventory(null, 27, "Secrets");
-                    ItemStack none = ItemUtil.Stack(NothingFound, NothingFoundItem, NothingFoundLore, 1, (short) 1);
+                    ItemStack none = ItemUtil.Stack(NothingFound, NothingFoundItem, NothingFoundLore, 1);
                     @SuppressWarnings("unused")
                     ItemMeta Itemmeta = none.getItemMeta();
                     invs.setItem(13, none);
@@ -96,7 +96,7 @@ public class Secrets extends JavaPlugin implements Listener {
                 for (String all : userlist) {
                     i++;
                     Material SercetITEM = Material.getMaterial(getConfig().getString("Items.ItemSecretFound.Type"));
-                    ItemStack Secret = ItemUtil.Stack(SecretColor + all, SercetITEM, Found, 1, (short) 10);
+                    ItemStack Secret = ItemUtil.Stack(SecretColor + all, SercetITEM, Found, 1);
                     if (getConfig().getBoolean("Items.ItemSecretFound.Enchanted")) {
                         ItemMeta SecretMeta = Secret.getItemMeta();
                         Secret.setItemMeta(SecretMeta);
@@ -109,7 +109,7 @@ public class Secrets extends JavaPlugin implements Listener {
                 int max = list.size();
                 int amoun = userlist.size();
                 Material TotalFoundItem = Material.getMaterial(getConfig().getString("Items.ItemTotalFoundSecrets.Type"));
-                ItemStack amount = ItemUtil.Stack(total, TotalFoundItem, totalcolor + amoun + " / " + max, 1, (short) 0);
+                ItemStack amount = ItemUtil.Stack(total, TotalFoundItem, totalcolor + amoun + " / " + max, 1);
                 if (getConfig().getBoolean("Items.ItemSecretFound.Enchanted")) {
                     ItemMeta amountMeta = amount.getItemMeta();
                     amount.setItemMeta(amountMeta);

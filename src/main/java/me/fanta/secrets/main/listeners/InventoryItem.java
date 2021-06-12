@@ -52,15 +52,14 @@ public class InventoryItem implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
     public void OnItemClick(PlayerInteractEvent e) {
         if (e.getPlayer().hasPermission("secrets.item.use")) {
             Material mat = Material.getMaterial(Plugin.getConfig().getString("Items.SecretItem.Type"));
             if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                 Player p = e.getPlayer();
-                if (p.getItemInHand().getType().equals(mat)) {
-                    if (p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "§"))) {
+                if (p.getInventory().getItemInMainHand().getType().equals(mat)) {
+                    if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(Plugin.getConfig().getString("Items.SecretItem.Name").replace("&", "§"))) {
                         p.performCommand("secrets");
                     }
                 }

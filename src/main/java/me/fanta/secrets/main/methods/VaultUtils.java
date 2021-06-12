@@ -12,16 +12,15 @@ public class VaultUtils {
 
     private static Economy econ = null;
 
-    public static boolean setupEconomy(Plugin plugin) {
+    public static void setupEconomy(Plugin plugin) {
         if (plugin.getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
+            return;
         }
         RegisteredServiceProvider<Economy> rsp = plugin.getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
-            return false;
+            return;
         }
         econ = rsp.getProvider();
-        return econ != null;
     }
 
     public static Economy getEcon() {

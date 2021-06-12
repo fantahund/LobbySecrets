@@ -9,7 +9,6 @@ public class InventoryClickListener implements Listener {
     public void onClick(InventoryClickEvent e) {
         if (e.getView().getTitle().equals("Secrets")) {
             e.setCancelled(true);
-            return;
         }
     }
 }

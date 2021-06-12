@@ -7,9 +7,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemUtil {
-    public static ItemStack Stack(String Display, Material m, String lores, int Anzahl, short Shorts) {
-        @SuppressWarnings("deprecation")
-        ItemStack istack52 = new ItemStack(m, Anzahl, Shorts);
+    public static ItemStack Stack(String Display, Material m, String lores, int Anzahl) {
+        ItemStack istack52 = new ItemStack(m, Anzahl);
         ItemMeta istackMeta52 = istack52.getItemMeta();
         istackMeta52.setDisplayName(Display);
         List<String> lore = new ArrayList<String>();
