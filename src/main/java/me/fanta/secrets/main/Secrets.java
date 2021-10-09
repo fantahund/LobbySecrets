@@ -2,6 +2,7 @@ package me.fanta.secrets.main;
 
 import java.io.File;
 import java.util.List;
+import java.util.logging.Logger;
 
 import me.fanta.secrets.main.listeners.InventoryClickListener;
 import me.fanta.secrets.main.listeners.InventoryItem;
@@ -26,33 +27,36 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Secrets extends JavaPlugin implements Listener {
 
-    private static Plugin instance;
+    public static Logger LOGGER;
+
+    private static Plugin plugin;
 
     public void onEnable() {
-        instance = this;
-        System.out.println("------------------------- Secrets " + getDescription().getVersion() + " -------------------------");
-        System.out.println("Secrets " + getDescription().getVersion() + " is loading... [" + Bukkit.getVersion() + "]");
-        System.out.println("Plugin by " + getDescription().getAuthors());
-        System.out.println("Date Modified: 28 Jan 2019");
+        LOGGER = getLogger();
+        plugin = this;
+        getLogger().info("------------------------- Secrets " + getDescription().getVersion() + " -------------------------");
+        getLogger().info("Secrets " + getDescription().getVersion() + " is loading... [" + Bukkit.getVersion() + "]");
+        getLogger().info("Plugin by " + getDescription().getAuthors());
+        getLogger().info("Date Modified: 10 Oktober 2021");
         if (hasVault()) {
-            System.out.println("Vault detected!");
+            getLogger().info("Vault detected!");
             VaultUtils.setupEconomy(this);
         } else {
-            System.out.println("Vault not detected!");
+            getLogger().info("Vault not detected!");
         }
         getServer().getPluginManager().registerEvents(new SignClickListener(this), this);
         getServer().getPluginManager().registerEvents(new SignCreateListener(this), this);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryItem(this), this);
-        System.out.println("Version " + getDescription().getVersion() + " Was loaded successfully!");
-        System.out.println("-----------------------------------------------------------------");
+        getLogger().info("Version " + getDescription().getVersion() + " Was loaded successfully!");
+        getLogger().info("-----------------------------------------------------------------");
         loadConfig();
         saveConfig();
 
     }
 
     public void onDisable() {
-        System.out.println("[SECRETS] Plugin disabled");
+        getLogger().info("[SECRETS] Plugin disabled");
     }
 
     public void loadConfig() {
@@ -156,8 +160,8 @@ public class Secrets extends JavaPlugin implements Listener {
     }
 
 
-    public static Plugin getInstance() {
-        return instance;
+    public static Plugin getPlugin() {
+        return plugin;
     }
 
 }

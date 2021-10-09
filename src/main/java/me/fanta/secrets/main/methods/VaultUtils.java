@@ -23,16 +23,12 @@ public class VaultUtils {
         econ = rsp.getProvider();
     }
 
-    public static Economy getEcon() {
-        return econ;
-    }
-
     public static void setBalance(Player player, double balance) {
         EconomyResponse r = econ.depositPlayer(player, balance);
         if (r.transactionSuccess()) {
-            player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddSuccess").replace("&", "§"), econ.format(r.amount)));
+            player.sendMessage(String.format(Secrets.getPlugin().getConfig().getString("Messages.balanceAddSuccess").replace("&", "§"), econ.format(r.amount)));
         } else {
-            player.sendMessage(String.format(Secrets.getInstance().getConfig().getString("Messages.balanceAddError").replace("&", "§"), econ.format(r.amount)));
+            player.sendMessage(String.format(Secrets.getPlugin().getConfig().getString("Messages.balanceAddError").replace("&", "§"), econ.format(r.amount)));
         }
     }
 

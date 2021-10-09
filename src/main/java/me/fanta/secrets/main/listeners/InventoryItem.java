@@ -16,7 +16,7 @@ import me.fanta.secrets.main.Secrets;
 
 public class InventoryItem implements Listener {
 
-    private Secrets Plugin;
+    private final Secrets Plugin;
 
     public InventoryItem(Secrets p) {
         Plugin = p;

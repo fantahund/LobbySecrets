@@ -1,8 +1,6 @@
 name: Secrets
-version: 1.4.0
+version: 1.4.1
 author: fanta & Shanawi
 main: me.fanta.secrets.main.Secrets
 commands:
      secrets:
-          description:
-          usage:

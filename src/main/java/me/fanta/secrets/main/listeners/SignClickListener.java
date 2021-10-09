@@ -31,8 +31,7 @@ public class SignClickListener implements Listener {
         FileConfiguration cmdfile = YamlConfiguration.loadConfiguration(Cmd);
         File Data = new File("plugins/Secrets", "Users.yml");
         FileConfiguration userfile = YamlConfiguration.loadConfiguration(Data);
-        if ((e.getAction() == Action.RIGHT_CLICK_BLOCK) && ((e.getClickedBlock().getState() instanceof Sign))) {
-            Sign s = (Sign) e.getClickedBlock().getState();
+        if ((e.getAction() == Action.RIGHT_CLICK_BLOCK) && ((e.getClickedBlock().getState() instanceof Sign s))) {
             String Linie1 = main.getConfig().getString("Sign.line1").replace("&", "§");
             if (s.getLine(0).equalsIgnoreCase(Linie1)) {
                 String secretname = s.getLine(1);
